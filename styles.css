@@ -1,63 +1,23 @@
+/* Custom styles */
 body {
+    background-color: #f0f0f0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
 }
 
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
+.card {
+    margin-bottom: 20px;
 }
 
-h1 {
-    color: #333;
-    text-align: center;
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
 }
 
-.video-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
-}
-
-.video-item:hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
-}
-
-.video-item img {
-    max-width: 120px;
-    height: auto;
-    margin-right: 10px;
-    border-radius: 4px;
-}
-
-.video-info {
-    flex: 1;
-}
-
-.video-title {
+.card-title {
     font-size: 18px;
-    color: #333;
-    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.video-description {
+.card-text {
     color: #666;
-    font-size: 14px;
-}
-
-@media (max-width: 600px) {
-    .video-item img {
-        max-width: 80px;
-    }
 }
