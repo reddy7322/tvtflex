@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
             title: 'Movie 1',
             description: 'This is a movie description.',
             poster: 'https://via.placeholder.com/300x200',
-            source: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // Example YouTube video
+            source: 'http://starshare.live:8080/movie/rvdgdf7647564/bvchgfd235454/315931.mp4' // Example YouTube video
         },
         {
             title: 'Web Series Episode 1',
             description: 'First episode of a web series.',
             poster: 'https://via.placeholder.com/300x200',
-            source: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // Example YouTube video
+            source: 'http://starshare.live:8080/movie/rvdgdf7647564/bvchgfd235454/315931.mp4' // Example YouTube video
         },
         // Add more videos as needed
     ];
