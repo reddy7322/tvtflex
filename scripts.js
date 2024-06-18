@@ -1,80 +1,58 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const videoList = document.getElementById('videoList');
+document.addEventListener("DOMContentLoaded", function() {
+    const videoPlaylist = document.getElementById('video-playlist');
 
-    // Sample video data
+    // Example data for movies and web series
     const videos = [
         {
-            name: 'As Good as Dead (2022)',
-            poster: 'https://m.media-amazon.com/images/M/MV5BZjcxMWVlMTQtZWRmZS00ZGE0LTliNzEtYTIyNmQxZTA1ZTcxXkEyXkFqcGdeQXVyNzEwMjYxMjQ@._V1_.jpg',
-            description: 'As Good as Dead (2022) telugu Movie'
+            title: 'Movie 1',
+            description: 'This is a movie description.',
+            poster: 'https://via.placeholder.com/300x200',
+            source: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // Example YouTube video
         },
         {
-            name: 'Srimannarayana (2012)',
-            poster: 'https://m.media-amazon.com/images/M/MV5BYjEzYjA5MTItMjUzOC00OTZkLWE5OTEtNWJlNGFjMGQ1NDZjXkEyXkFqcGdeQXVyNDc2NzU1MTA@._V1_FMjpg_UX1000_.jpg',
-            description: 'Srimannarayana (2012) telugu movie'
+            title: 'Web Series Episode 1',
+            description: 'First episode of a web series.',
+            poster: 'https://via.placeholder.com/300x200',
+            source: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' // Example YouTube video
         },
-        {
-            name: 'Video 3',
-            poster: 'https://via.placeholder.com/150',
-            description: 'Watch this video to learn more about the topic.'
-        }
         // Add more videos as needed
     ];
 
-    // Function to create video list items
-    function createVideoListItem(video) {
-        const listItem = document.createElement('div');
-        listItem.classList.add('video-item');
+    // Loop through the videos array and create video cards
+    videos.forEach(video => {
+        const card = document.createElement('div');
+        card.classList.add('col-lg-4', 'col-md-6', 'col-sm-12');
+        card.innerHTML = `
+            <div class="card">
+                <img src="${video.poster}" class="card-img-top" alt="${video.title}">
+                <div class="card-body">
+                    <h5 class="card-title">${video.title}</h5>
+                    <p class="card-text">${video.description}</p>
+                    <a href="#" class="btn btn-primary btn-block watch-video" data-source="${video.source}">Watch Now</a>
+                </div>
+            </div>
+        `;
+        videoPlaylist.appendChild(card);
+    });
 
-        const thumbnail = document.createElement('img');
-        thumbnail.src = video.poster;
-        thumbnail.alt = video.name;
-        listItem.appendChild(thumbnail);
+    // Initialize Clappr player when 'Watch Now' button is clicked
+    videoPlaylist.addEventListener('click', function(event) {
+        event.preventDefault();
+        if (event.target.classList.contains('watch-video')) {
+            const source = event.target.getAttribute('data-source');
+            const playerElement = document.createElement('div');
+            playerElement.classList.add('clappr-video-container', 'mb-4');
+            event.target.parentNode.parentNode.appendChild(playerElement);
 
-        const videoInfo = document.createElement('div');
-        videoInfo.classList.add('video-info');
-
-        const title = document.createElement('div');
-        title.classList.add('video-title');
-        title.textContent = video.name;
-        videoInfo.appendChild(title);
-
-        const description = document.createElement('div');
-        description.classList.add('video-description');
-        description.textContent = video.description;
-        videoInfo.appendChild(description);
-
-        listItem.appendChild(videoInfo);
-
-        // Add click event listener to play video (using Clappr for simplicity)
-        listItem.addEventListener('click', function() {
-            playVideo(video);
-        });
-
-        return listItem;
-    }
-
-    // Function to play video
-    function playVideo(video) {
-        const playerElement = document.createElement('div');
-        const player = new Clappr.Player({
-            source: 'http://starshare.live:8080/movie/rvdgdf7647564/bvchgfd235454/315952.mp4',  // Replace with actual video URL
-            parentId: playerElement,
-            width: '100%',
-            height: '360px',
-            autoPlay: true,
-        });
-        videoList.innerHTML = ''; // Clear video list
-        videoList.appendChild(playerElement);
-    }
-
-    // Initialize the video playlist
-    function init() {
-        videos.forEach(video => {
-            const listItem = createVideoListItem(video);
-            videoList.appendChild(listItem);
-        });
-    }
-
-    init();
+            const player = new Clappr.Player({
+                source: source,
+                parentId: playerElement,
+                width: '100%',
+                height: '360px',
+                autoPlay: true,
+                mute: false,
+                hideMediaControl: false
+            });
+        }
+    });
 });
