@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Playlist with Clappr.js</title>
-    <!-- Clappr.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clappr/0.2.98/clappr.min.js"></script>
-    <!-- Custom CSS -->
-    <style>
-        .playlist-item {
-            display: flex;
-            margin-bottom: 20px;
-            align-items: center;
-        }
-        .playlist-item img {
-            max-width: 100px;
-            margin-right: 10px;
-        }
-    </style>
+    <title>Material Style Video Playlist</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="player"></div>
-    <div id="playlist"></div>
-
-    <!-- Custom JavaScript -->
-    <script src="scripts.js"></script>
+    <div class="container">
+        <h1>Material Style Video Playlist</h1>
+        <div id="videoList" class="video-list">
+            <!-- Video items will be added here dynamically -->
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clappr/0.2.98/clappr.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
